@@ -1,0 +1,24 @@
+on: [push, pull_request]
+
+name: Continuous Integration
+
+jobs:
+
+  test:
+    name: Run cargo test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-14]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+          override: true
+      - name: cargo-test
+        run: |
+          cargo test

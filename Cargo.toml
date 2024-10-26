@@ -1,0 +1,13 @@
+[package]
+name = "mactest"
+version = "1.0.0"
+authors = ["Martin Bammer <mrbm74@gmail.com>"]
+description = "Test possible mac floating point bug"
+edition = "2021"
+license = "MIT"
+
+[lib]
+name = "mactest"
+crate-type = ["lib"]
+
+[dependencies]
